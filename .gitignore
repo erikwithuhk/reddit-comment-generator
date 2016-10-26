@@ -16,4 +16,4 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-data.csv
+reddit_comments_raw.csv
