@@ -11,9 +11,7 @@ corpora "on the fly" for any topic that you want, such as: biology, investments\
 , Buddhism, psychology, cars, basketball.
 }
 
-reddit = %{
-corpora erik erik erik erik erik erik erik
-}
+reddit = IO.read("./lib/data.csv", 5000)
 
 def count_words(words)
   word_count = {}
