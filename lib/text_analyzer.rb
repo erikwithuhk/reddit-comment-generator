@@ -12,15 +12,16 @@ class TextAnalyzer
     new_text_frequency = @frequency_calculator.get_word_frequency(@new_text)
     base_text_frequency = @frequency_calculator.get_word_frequency(@base_text)
 
-    top_1000_words_frequency = get_top_words(new_text_frequency, 1)
+    new_text_top_1000 = get_top_words(new_text_frequency, 1000)
+    base_text_top_1000 = get_top_words(base_text_frequency, 1000)
 
-    # unique_words = []
-    # new_text_frequency.each do |key, value|
-    #   if !base_text_frequency.include?(key)
-    #     unique_words.push(key)
-    #   end
-    # end
-    # unique_words
+    unique_words = []
+    new_text_top_1000.each do |key, value|
+      if !base_text_top_1000.include?(key)
+        unique_words.push(value)
+      end
+    end
+    unique_words
   end
 
   def get_top_words(word_frequency, limit)
