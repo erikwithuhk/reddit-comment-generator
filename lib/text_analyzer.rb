@@ -25,7 +25,6 @@ class TextAnalyzer
   def get_top_words(word_frequency, limit)
     sorted_frequency = word_frequency.sort_by { |key, value| value }
     descending_frequency = sorted_frequency.reverse
-    debugger
     descending_frequency[0...limit]
   end
 

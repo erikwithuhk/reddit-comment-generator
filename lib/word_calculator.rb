@@ -1,5 +1,5 @@
 class WordCalculator
-  attr_reader :total_words
+  attr_reader :words, :total_words
 
   def initialize(text)
     @words = get_words(text)
