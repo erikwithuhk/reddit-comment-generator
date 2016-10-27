@@ -1,27 +1,16 @@
 require './lib/word_calculator'
 
-TEST = "I love bananas. I love apples. So fun to love those things.".freeze
+TEST = "./lib/test.txt"
 REDDIT_DATA_FILE = "./lib/reddit_comments_raw.csv"
 
-REDDIT_COMMENTS = IO.read(REDDIT_DATA_FILE, 10000 * 10000)
+REDDIT_COMMENTS = IO.read(TEST)
 
-word_calculator = WordCalculator.new(TEST)
-total_words = word_calculator.total_words
-top_3_words = word_calculator.top_words(3)
+word_calculator = WordCalculator.new(REDDIT_COMMENTS)
 
-words = word_calculator.words
+markov_data = word_calculator.markov_data
 
-word_pairs = {}
-words.each_index do |index|
-  first_word = words[index]
-  second_word = words[index + 1] || ""
-  if !word_pairs.include?(first_word)
-    word_pairs[first_word] = [second_word]
-  else
-    word_pairs[first_word] = word_pairs[first_word].push(second_word)
-  end
-end
 
-word_pairs.each do |word, next_words|
-  Word.create(word: word, next_words: next_words)
+markov_data.each do |word, data|
+  # puts "Word: #{word}, Frequency: #{data[:frequency]}, Next words: #{data[:next_words]}"
+  Word.create(word: word, frequency: data[:frequency], next_words: data[:next_words])
 end

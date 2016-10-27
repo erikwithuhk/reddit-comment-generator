@@ -14,7 +14,28 @@ class WordCalculator
     combined_frequencies.keys
   end
 
+  def markov_data
+    word_frequencies = calculate_word_frequencies
+    word_data = {}
+    @words.each_index do |index|
+      first_word = words[index]
+      first_word_frequency = word_frequencies[first_word]
+      second_word = words[index + 1] || ""
+      if !word_data.include?(first_word)
+        word_data[first_word] = {
+          frequency: first_word_frequency,
+          next_words: ["#{second_word}"]
+        }
+      else
+        word_data[first_word][:next_words].push(second_word)
+      end
+    end
+    word_data
+  end
+
   private
+
+  attr_reader :word_frequencies
 
   def calculate_word_frequencies
     word_instances = total_word_instances

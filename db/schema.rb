@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20161026220319) do
 
   create_table "words", force: :cascade do |t|
     t.string "word",                      null: false
+    t.float  "frequency",                 null: false
     t.text   "next_words", default: "[]", null: false
   end
 
