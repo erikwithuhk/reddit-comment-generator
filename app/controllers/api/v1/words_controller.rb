@@ -9,10 +9,14 @@ class Api::V1::WordsController < ApplicationController
       total_pages = ((total_words - 1) / 10) + 1
       if @page_number > total_pages
         if @page_number === 1
-          render json: { error: "There is only #{total_pages} page of results." },
+          render json: {
+            error: "There is only #{total_pages} page of results."
+          },
           status: :bad_request
         else
-          render json: { error: "There are only #{total_pages} pages of results." },
+          render json: {
+            error: "There are only #{total_pages} pages of results."
+          },
           status: :bad_request
         end
       else
@@ -26,14 +30,9 @@ class Api::V1::WordsController < ApplicationController
         status: :ok
       end
     else
-      render json: { error: "requests must include a page number paramater" },
+      render json: { error: "Requests must include a page number." },
              status: :bad_request
     end
-  end
-
-  def show
-    word = Word.find(params[:id])
-    render json: word
   end
 
   private

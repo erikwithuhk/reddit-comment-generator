@@ -12,7 +12,6 @@ class Sentence
     current_word = top_50_words.sample
     first_word = current_word.word.capitalize
     sentence += first_word
-    # debugger
     limit.times do
       next_word = eval(current_word.next_words).sample
       sentence += " #{next_word}"
