@@ -2,7 +2,7 @@ require 'byebug'
 
 class Sentence
   def initialize(length)
-    @sentence = generate_sentence(length = 10)
+    @sentence = generate_sentence(length)
   end
 
   def generate_sentence(limit)
@@ -12,6 +12,7 @@ class Sentence
     current_word = top_50_words.sample
     first_word = current_word.word.capitalize
     sentence += first_word
+    # debugger
     limit.times do
       next_word = eval(current_word.next_words).sample
       sentence += " #{next_word}"
@@ -21,6 +22,6 @@ class Sentence
         current_word = top_50_words.sample
       end
     end
-    sentence
+    sentence += "."
   end
 end
