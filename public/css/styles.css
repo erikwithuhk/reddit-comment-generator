@@ -1,3 +1,61 @@
 body {
-  background-color: crimson;
+  background-color: #aaa;
+  box-sizing: border-box;
+  font: normal 16px verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #cee3f8;
+  border-bottom: 1px solid #5f99cf;
+  padding: 1rem;
+}
+
+header h1 {
+  margin: 0;
+  max-width: 960px;
+}
+
+main {
+  background-color: #fff;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+table {
+  border: 2px solid #000;
+  text-align: center;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #000;
+  padding: 0.5rem;
+}
+
+th {
+  background-color: #cee3f8;
+  font-weight: bold;
+}
+
+td {
+
+}
+
+pre {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  max-height: 10rem;
+  overflow: scroll;
+  padding: 1rem;
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }

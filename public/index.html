@@ -7,7 +7,74 @@
     <link rel="stylesheet" href="/css/styles.css" media="screen" title="no title">
   </head>
   <body>
-    <h1>Reddit Comment Generator API</h1>
+    <header>
+      <h1>Reddit Comment Generator API</h1>
+    </header>
+    <main>
 
+      <h2>API documentation</h2>
+      <p>Base URL: localhost:3000/api/v1/</p>
+      <h3>Comments</h3>
+      <h4>GET /comments</h4>
+      <p>Generate Reddit comments.</p>
+
+      <h5>Query string</h5>
+      <table cellspacing="0">
+        <tr>
+          <th>Query</th>
+          <th>Data Type</th>
+          <th>Default</th>
+          <th>Required</th>
+        </tr>
+        <tr>
+          <td>number</td>
+          <td>integer</td>
+          <td>1</td>
+          <td>N</td>
+        </tr>
+      </table>
+
+      <h5>Responses</h5>
+      <h6>Example</h6>
+      <pre class="comments-response-example">Loading...</pre>
+
+      <h3>Words</h3>
+      <h4>GET /words</h4>
+      <p>View the list of all the words extracted from Reddit user comments.</p>
+
+      <h5>Query string</h5>
+      <table cellspacing="0">
+        <tr>
+          <th>Query</th>
+          <th>Data Type</th>
+          <th>Required</th>
+        </tr>
+        <tr>
+          <td>page</td>
+          <td>integer</td>
+          <td>Y</td>
+        </tr>
+      </table>
+
+      <h5>Responses</h5>
+      <h6>Example</h6>
+      <pre class="words-response-example">Loading...</pre>
+    </main>
+
+    <script type="text/javascript">
+      function setJSON(className, jsonObject) {
+        document.querySelector(`.${className}`).innerHTML = JSON.stringify(jsonObject, undefined, 2);
+      }
+      function fetchJSON(url, className) {
+        fetch(url)
+          .then((response) => {
+            response.json().then((data) => setJSON(className, data))
+                           .catch(err => console.error(err))
+          })
+          .catch(err => console.error(err));
+      }
+      fetchJSON('/api/v1/comments?number=5', 'comments-response-example');
+      fetchJSON('/api/v1/words?page=1', 'words-response-example');
+    </script>
   </body>
 </html>
