@@ -1,19 +1,15 @@
 require 'csv'
 require './lib/word_calculator'
 
-REDDIT_DATA_FILE = "./lib/reddit_comments_raw.csv"
+REDDIT_SEED_FILE = "./lib/reddit_comments_limit_100_000.csv"
 
 word_calculator = WordCalculator.new
 
 lines = 0
-CSV.foreach(REDDIT_DATA_FILE) do |row|
-  if lines > 100_000
-    break
-  else
-    word_calculator.analyze_line(row[0])
-    p lines
-    lines += 1
-  end
+CSV.foreach(REDDIT_SEED_FILE) do |row|
+  word_calculator.analyze_line(row[0])
+  p row[0]
+  lines += 1
 end
 
 word_calculator.words.each do |word, data|
